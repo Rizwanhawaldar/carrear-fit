@@ -60,6 +60,17 @@ index.html
 
 **Financial fitness**: `months = savings / essential monthly expenses`; bands: `<1` Critical, `1–2` At Risk, `3–5` Adequate, `6+` Strong. Score = `min(100, months / 6 * 100)`.
 
+## Hosting: GitHub Pages (quick, free, public URL)
+
+A workflow at [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml) builds and deploys `dist/` to GitHub Pages automatically on every push to `main`.
+
+1. In your GitHub repo, go to **Settings → Pages** and set **Source** to **GitHub Actions** (one-time setup).
+2. (Optional, for Grok/tel: features) Go to **Settings → Secrets and variables → Actions** and add repo secrets `VITE_GROK_API_KEY`, `VITE_GROK_API_URL`, `VITE_CONTACT_PHONE` — the workflow passes them into the build. Skip this if you're fine with the offline rule-based recommendations and no call button for now.
+3. Push to `main`. The workflow builds, tests, and deploys automatically; the Actions tab shows progress and the live URL once done.
+4. Your site will be available at `https://<your-username>.github.io/<your-repo-name>/`. `vite.config.js` auto-detects the repo name from GitHub Actions so asset paths resolve correctly — no manual `base` path edits needed.
+
+Note: like the Grok API-key risk described below, anything in `VITE_*` secrets is still baked into the public client bundle at build time — GitHub Actions secrets only keep the value out of your source code/logs, not out of the deployed site.
+
 ## Hosting: private S3 + CloudFront (manual steps)
 
 This is a static site with no server-side component — deploy the `dist/` folder behind CloudFront with the S3 bucket kept fully private.
