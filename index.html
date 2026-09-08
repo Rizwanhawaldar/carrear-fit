@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Fit — Career &amp; Financial Fitness Check</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>💪 Career Fit</h1>
+      <p>Pick your IT role, select your tech stack, and get your Career Fitness score out of 100 — calculated entirely in your browser. 🔒 We respect your privacy: no login, no account, and nothing you enter is ever stored or tracked.</p>
+    </header>
+
+    <main class="app-main">
+      <form id="career-form">
+        <section class="card" aria-labelledby="career-heading">
+          <h2 id="career-heading">🚀 Career Fitness</h2>
+          <div id="career-questions"></div>
+        </section>
+
+        <section class="card" aria-labelledby="financial-heading">
+          <h2 id="financial-heading">💰 Financial Fitness</h2>
+          <p class="hint callout">🛟 We estimate how many months your savings would cover your essential expenses. 📊</p>
+
+          <label class="field">
+            <span>Total savings available (₹)</span>
+            <input type="number" id="savings" name="savings" min="0" step="1" required />
+          </label>
+
+          <label class="field">
+            <span>Essential monthly expenses (₹)</span>
+            <input type="number" id="monthlyExpenses" name="monthlyExpenses" min="1" step="1" required />
+          </label>
+        </section>
+
+        <button type="submit" class="primary-button">🔥 Check My Fitness</button>
+      </form>
+
+      <section id="results" class="card results" hidden aria-live="polite">
+        <h2>🎉 Your Fitness Report</h2>
+
+        <div class="score-summary">
+          <div class="score-box">
+            <span class="score-value" id="career-score">--</span>
+            <span class="score-label">Career Fitness /100</span>
+          </div>
+          <div class="score-box">
+            <span class="score-value" id="financial-score">--</span>
+            <span class="score-label">Financial Fitness /100</span>
+          </div>
+        </div>
+
+        <p id="financial-detail"></p>
+
+        <div class="recommendation">
+          <h3>🎯 Your Recommendation</h3>
+          <p id="recommendation-text">Calculating...</p>
+          <p id="recommendation-source" class="hint"></p>
+        </div>
+
+        <a id="call-advice" class="call-button" href="tel:" role="button">📞 Call for 1-to-1 Advice</a>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
